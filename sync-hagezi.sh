@@ -758,7 +758,17 @@ profile_exists() {
 
 summary_row() {
     local profile="$1" folder="$2" status="$3" rules="$4"
-    [[ -n "$SUMMARY_FILE" ]] && echo "| $profile | $folder | $status | $rules |" >> "$SUMMARY_FILE"
+    [[ -z "$SUMMARY_FILE" ]] && return
+
+    # Lazy header: write only when first row is about to be emitted
+    if [[ ! -f "$TMPDIR/.summary_header_written" ]]; then
+        echo "### ControlD HaGeZi Sync Report 🚀" >> "$SUMMARY_FILE"
+        echo "| Profile | Folder | Status | Rules |" >> "$SUMMARY_FILE"
+        echo "|---|---|---|---|" >> "$SUMMARY_FILE"
+        touch "$TMPDIR/.summary_header_written"
+    fi
+
+    echo "| $profile | $folder | $status | $rules |" >> "$SUMMARY_FILE"
 }
 
 summary_header() {
@@ -987,9 +997,6 @@ main() {
     done
 
     log "Download complete: $downloaded new, $skipped unchanged, $failed failed"
-
-    # --- Summary header (always, before any early exit) ---
-    summary_header
 
     # --- Early exit if nothing changed ---
     if [[ "$downloaded" -eq 0 && "$failed" -eq 0 ]]; then
