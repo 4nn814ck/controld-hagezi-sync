@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =============================================================================
 # ControlD HaGeZi Folder Auto-Sync
-# Version: 2.2.0
+# Version: 2.2.1
 # Description: Syncs HaGeZi DNS blocklist folders using atomic server-side swaps.
 # Requirements: bash 4.3+, curl, jq, cmp
 # =============================================================================
@@ -9,7 +9,7 @@
 set -o pipefail
 shopt -s extglob
 
-VERSION="2.2.0"
+VERSION="2.2.1"
 
 # Bash version check
 if (( BASH_VERSINFO[0] < 4 )); then
@@ -30,7 +30,6 @@ API_BACKOFF_BASE=2
 
 # Persistent cache for content-based change detection
 SYNC_CACHE="${SYNC_CACHE:-${XDG_CACHE_HOME:-$HOME/.cache}/controld-hagezi-sync}"
-CACHE_VERSION="4"
 
 # ---------------------------------------------------------------------------
 # GLOBALS
@@ -73,6 +72,16 @@ safe_name() {
 }
 
 # ---------------------------------------------------------------------------
+# URL REDACTION HELPER
+# ---------------------------------------------------------------------------
+
+redact_url() {
+    local url="$1"
+    # Redact profile IDs in URLs like /profiles/ABC123/...
+    printf '%s\n' "$url" | sed 's|/profiles/[a-zA-Z0-9]*/|/profiles/<id>/|g'
+}
+
+# ---------------------------------------------------------------------------
 # API RETRY HELPER
 # ---------------------------------------------------------------------------
 
@@ -105,7 +114,7 @@ api_call_with_retry() {
         [[ "$code" =~ ^(200|201|204)$ ]] && { printf '%s\n' "$body"; return 0; }
 
         retries=$(( retries - 1 ))
-        [[ "$retries" -le 0 ]] && { log "  ERROR: Max retries exceeded for $method $url"; return 1; }
+        [[ "$retries" -le 0 ]] && { log "  ERROR: Max retries exceeded for $method $(redact_url "$url")"; return 1; }
 
         if [[ "$code" == "429" ]]; then
             retry_after=$(awk '/^[Rr]etry-[Aa]fter:/ {print $2}' "$API_HDR_FILE" | tr -d '\r\n')
@@ -122,7 +131,7 @@ api_call_with_retry() {
             sleep "$delay"
             delay=$((delay * 2))
         else
-            log "  ERROR: API call failed (HTTP $code) on $method $url"
+            log "  ERROR: API call failed (HTTP $code) on $method $(redact_url "$url")"
             return 1
         fi
     done
@@ -523,8 +532,8 @@ Options:
   --profile NAME     Sync only the named profile (must match profiles.names)
   --list-hagezi      List available HaGeZi folders (ready for config.toml)
   --last-updated     Show the last updated date for configured folders and exit
-  --no-freshness     Skip the upstream freshness report at end of sync
   --check-updates    Check if upstream folders changed, exit 0 if yes, 1 if no
+  --no-freshness     Skip the upstream freshness report at end of sync
   --no-cache         Ignore persistent cache, always download fresh lists
   -h, --help         Show this help message and exit
 
@@ -876,7 +885,7 @@ main() {
     fi
 
     if [[ -n "$TARGET_PROFILE" ]]; then
-        if ! profile_exists "$TARGET_PROFILE"; then
+        if ! profile_exists "$TARGET_PROFILE" ]]; then
             log "ERROR: Profile '$TARGET_PROFILE' not found"
             exit 1
         fi
@@ -899,11 +908,6 @@ main() {
     printf 'Authorization: Bearer %s\n' "$API_TOKEN" > "$AUTH_HDR_FILE"
 
     mkdir -p "$SYNC_CACHE"
-    if [[ -f "$SYNC_CACHE/.version" && "$(cat "$SYNC_CACHE/.version")" != "$CACHE_VERSION" ]]; then
-        log "Cache format changed (v$(cat "$SYNC_CACHE/.version") -> v$CACHE_VERSION), clearing old cache..."
-        rm -rf "$SYNC_CACHE"/*
-    fi
-    echo "$CACHE_VERSION" > "$SYNC_CACHE/.version"
 
     log "========================================"
     log "ControlD Sync v${VERSION}"
@@ -961,7 +965,7 @@ main() {
         fi
 
         log ""
-        log "--- Profile: $pname ($pid) ---"
+        log "--- Profile: $pname ---"
 
         folder_list="${PROFILE_FOLDERS[$pname]}"
         [[ -z "$folder_list" ]] && { log "  WARN: No folders mapped"; continue; }
