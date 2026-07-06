@@ -30,7 +30,15 @@ Automatically sync HaGeZi DNS blocklists to your ControlD profiles via the Contr
 
 **Bottom line:** If you want a lightweight, transparent script where you can define *different* blocklists for *different* family members or devices using plain profile names -- and preview changes before they go live -- this is the one.
 
-![Star History Chart](https://api.star-history.com/svg?repos=0x11DFE/controld-hagezi-sync,keksiqc/ctrld-sync,italorgama/ctrld-hagezi-sync,tupcakes/controld-updater&type=Date)
+## Star History
+
+<a href="https://www.star-history.com/?repos=0x11dfe%2Fcontrold-hagezi-sync&type=timeline&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=0x11dfe/controld-hagezi-sync&type=timeline&theme=dark&legend=top-left&sealed_token=QuImaITkswYwT4BKpHN4W4Pqe7DokqxYyaJNmHvVykFZz6gPq3kswApaM40PurYBDbuFfHo8R2Myb9SQ0QblkfyhiLA2wniFdYHb752uh8CgcSmPFTgcLxhbcXqNuSYmneHbUW-tmQJnKlTJ1HBwiuJU7AUIJJ3PEKfFNESY28ynJ7WxKHXs-Px-uBD0" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=0x11dfe/controld-hagezi-sync&type=timeline&legend=top-left&sealed_token=QuImaITkswYwT4BKpHN4W4Pqe7DokqxYyaJNmHvVykFZz6gPq3kswApaM40PurYBDbuFfHo8R2Myb9SQ0QblkfyhiLA2wniFdYHb752uh8CgcSmPFTgcLxhbcXqNuSYmneHbUW-tmQJnKlTJ1HBwiuJU7AUIJJ3PEKfFNESY28ynJ7WxKHXs-Px-uBD0" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=0x11dfe/controld-hagezi-sync&type=timeline&legend=top-left&sealed_token=QuImaITkswYwT4BKpHN4W4Pqe7DokqxYyaJNmHvVykFZz6gPq3kswApaM40PurYBDbuFfHo8R2Myb9SQ0QblkfyhiLA2wniFdYHb752uh8CgcSmPFTgcLxhbcXqNuSYmneHbUW-tmQJnKlTJ1HBwiuJU7AUIJJ3PEKfFNESY28ynJ7WxKHXs-Px-uBD0" />
+ </picture>
+</a>
 
 ---
 
