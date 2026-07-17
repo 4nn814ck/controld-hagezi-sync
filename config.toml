@@ -20,7 +20,7 @@ dry_run = false
 
 [profiles]
 # Exact names of your ControlD profiles (case-sensitive).
-names = ["Tesla", "Kids", "Friends", "Adults"]
+names = ["Aggressive", "Extreme", "Extreme for Windows", "Hardened"]
 
 # =============================================================================
 # FOLDER DEFINITIONS
@@ -30,11 +30,16 @@ names = ["Tesla", "Kids", "Friends", "Adults"]
 # =============================================================================
 
 [folders]
+"Apple Tracker"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-apple-folder.json"
 "Badware Hoster"         = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/controld/badware-hoster-folder.json"
-"Most Abused TLDs"       = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/controld/spam-tlds-combined-folder.json"
-"No Safesearch Support"  = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/controld/nosafesearch-folder.json"
-"Referral Allow" = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/controld/referral-allow-folder.json"
-"META Tracker Allow"     = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/controld/meta-tracker-allow-folder.json"
+"Known Issues allow"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/ultimate-known_issues-allow-folder.json"
+"LG webOS Tracker"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-lgwebos-folder.json"
+"Microsoft Tracker"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-microsoft-folder.json"
+"Referral"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/referral-allow-folder.json"
+"Samsung Tracker"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-samsung-folder.json"
+"Spam IDNs"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/spam-idns-folder.json"
+"Spam TLDs allow"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/spam-tlds-allow-folder.json"
+"Spam TLDs"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/spam-tlds-folder.json"
 
 # =============================================================================
 # PROFILE → FOLDER MAPPINGS
@@ -44,22 +49,7 @@ names = ["Tesla", "Kids", "Friends", "Adults"]
 # =============================================================================
 
 [profile_folders]
-Tesla   = ["Badware Hoster", "Most Abused TLDs"]
-Kids    = [
-  "Badware Hoster",
-  "Most Abused TLDs",
-  "No Safesearch Support",
-  "Referral Allow"
-]
-Friends = [
-  "Badware Hoster",
-  "Most Abused TLDs",
-  "Referral Allow",
-  "META Tracker Allow"
-]
-Adults  = [
-  "Badware Hoster",
-  "Most Abused TLDs",
-  "Referral Allow",
-  "META Tracker Allow"
-]
+Aggressive    = ["Badware Hoster", "Known Issues allow", "Referral", "Spam IDNs", "Spam TLDs allow", "Spam TLDs", "Samsung Tracker", "Apple Tracker"]
+Extreme = ["Badware Hoster", "Known Issues allow", "Referral", "Spam IDNs", "Spam TLDs allow", "Spam TLDs", "Apple Tracker"]
+Extreme for Windows  = ["Badware Hoster", "Known Issues allow", "Referral", "Spam IDNs", "Spam TLDs allow", "Spam TLDs", "Microsoft Tracker", "Apple Tracker"]
+Hardened  = ["Badware Hoster", "Known Issues allow", "Referral", "Spam IDNs", "Spam TLDs allow", "Spam TLDs", "LG webOS Tracker", "Apple Tracker"]
