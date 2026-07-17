@@ -30,16 +30,16 @@ names = ["Aggressive", "Extreme", "Extreme for Windows", "Hardened"]
 # =============================================================================
 
 [folders]
-"Apple Tracker"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-apple-folder.json"
-"Badware Hoster"         = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/controld/badware-hoster-folder.json"
-"Known Issues allow"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/ultimate-known_issues-allow-folder.json"
-"LG webOS Tracker"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-lgwebos-folder.json"
-"Microsoft Tracker"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-microsoft-folder.json"
-"Referral"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/referral-allow-folder.json"
-"Samsung Tracker"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-samsung-folder.json"
-"Spam IDNs"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/spam-idns-folder.json"
-"Spam TLDs allow"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/spam-tlds-allow-folder.json"
-"Spam TLDs"         = "https://github.com/hagezi/dns-blocklists/blob/main/controld/spam-tlds-folder.json"
+"Apple Tracker"       = "https://raw.githubusercontent.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-apple-folder.json"
+"Badware Hoster"      = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/controld/badware-hoster-folder.json"
+"Known Issues allow"  = "https://raw.githubusercontent.com/hagezi/dns-blocklists/blob/main/controld/ultimate-known_issues-allow-folder.json"
+"LG webOS Tracker"    = "https://raw.githubusercontent.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-lgwebos-folder.json"
+"Microsoft Tracker"   = "https://raw.githubusercontent.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-microsoft-folder.json"
+"Referral"            = "https://raw.githubusercontent.com/hagezi/dns-blocklists/blob/main/controld/referral-allow-folder.json"
+"Samsung Tracker"     = "https://raw.githubusercontent.com/hagezi/dns-blocklists/blob/main/controld/native-tracker-samsung-folder.json"
+"Spam IDNs"           = "https://raw.githubusercontent.com/hagezi/dns-blocklists/blob/main/controld/spam-idns-folder.json"
+"Spam TLDs allow"     = "https://raw.githubusercontent.com/hagezi/dns-blocklists/blob/main/controld/spam-tlds-allow-folder.json"
+"Spam TLDs"           = "https://raw.githubusercontent.com/hagezi/dns-blocklists/blob/main/controld/spam-tlds-folder.json"
 
 # =============================================================================
 # PROFILE → FOLDER MAPPINGS
